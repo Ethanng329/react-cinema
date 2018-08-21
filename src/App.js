@@ -1,15 +1,47 @@
 import React from 'react';
+import Search from './Search';
+import Displaybody from './Displaybody';
+import Plot from './Plot';
 
 class App extends React.Component {
-  constructor(){
+  constructor() {
     super();
+
+    this.state = {
+      movies: [],
+      plot: "Click Movie Title for more info."
+
+
+    }
+
+    this.jsonReceiver = this.jsonReceiver.bind(this);
+    this.plotReceiver = this.plotReceiver.bind(this);
   }
 
-  render(){
+  jsonReceiver(data) {
+    this.setState({
+      movies: data,
+
+    });
+    console.log(this.state.movies);
+  }
+
+  plotReceiver(plot) {
+    this.setState({
+      plot: plot,
+    });
+    console.log(this.state.plot);
+  }
+
+  render() {
+
     return (
-      <div>
-        React cinema app
-      </div>
+
+      < div >
+        <Search jsonReceiver={this.jsonReceiver} />
+        <Displaybody movies={this.state.movies} plotReceiver={this.plotReceiver} />
+        <Plot plot={this.state.plot} />
+      </div >
     )
   }
 }

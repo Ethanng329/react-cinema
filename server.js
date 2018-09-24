@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-app.use('/dist', express.static('dist'));
+app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use('/CSS', express.static(path.join(__dirname, 'CSS')));
 // app.use('/CSS', express.static('myCSS'));
 

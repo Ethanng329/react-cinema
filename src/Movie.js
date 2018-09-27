@@ -9,7 +9,7 @@ class Movie extends React.Component {
 
   handleClick(event) {
     // console.log(this.props.image.imdbID)
-    fetch(`http://www.omdbapi.com/?i=${this.props.image.imdbID}&apikey=db96ccd2`)
+    fetch(`https://www.omdbapi.com/?i=${this.props.image.imdbID}&apikey=db96ccd2`)
       .then(function (response) {
         return response.json();
       })

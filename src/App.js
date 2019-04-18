@@ -9,10 +9,8 @@ class App extends React.Component {
 
     this.state = {
       movies: [],
-      plot: "Click Movie Title for more info."
-
-
-    }
+      plot: 'Click Movie Title for more info.'
+    };
 
     this.jsonReceiver = this.jsonReceiver.bind(this);
     this.plotReceiver = this.plotReceiver.bind(this);
@@ -20,29 +18,28 @@ class App extends React.Component {
 
   jsonReceiver(data) {
     this.setState({
-      movies: data,
-
+      movies: data
     });
-    console.log(this.state.movies);
   }
 
   plotReceiver(plot) {
     this.setState({
-      plot: plot,
+      plot: plot
     });
     console.log(this.state.plot);
   }
 
   render() {
-
     return (
-
-      < div >
+      <div>
         <Search jsonReceiver={this.jsonReceiver} />
-        <Displaybody movies={this.state.movies} plotReceiver={this.plotReceiver} />
+        <Displaybody
+          movies={this.state.movies}
+          plotReceiver={this.plotReceiver}
+        />
         <Plot plot={this.state.plot} />
-      </div >
-    )
+      </div>
+    );
   }
 }
 

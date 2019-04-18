@@ -5,34 +5,27 @@ class Search extends React.Component {
     super(props);
     this.state = { input: '' };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({
       input: event.target.value
     });
-  }
+  };
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
-    const that = this;
 
-    fetch(`https://www.omdbapi.com/?s=${this.state.input}&apikey=db96ccd2`)
-      .then(function(response) {
-        return response.json();
+    fetch(`/OMDB/${this.state.input}`)
+      .then(res => res.json())
+      .then(data => {
+        const movies = data.Search.map(item => item);
+        this.props.jsonReceiver(movies);
       })
-      .then(function(data) {
-        console.log(data);
-        that.props.jsonReceiver(data.Search.map(item => item));
-      })
-      .catch(function(error) {
-        console.log(error);
-        alert('Search Error, please try another search term');
-        // something went wrong. let's sort it out
-      });
-  }
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (

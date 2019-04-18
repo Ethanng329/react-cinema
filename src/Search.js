@@ -1,24 +1,21 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
 
 class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { input: '' };
+  state = {
+    input: ''
+  };
 
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange = event => {
+  handleChange = name => event => {
     this.setState({
-      input: event.target.value
+      [name]: event.target.value
     });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-
     fetch(`/OMDB/${this.state.input}`)
       .then(res => res.json())
       .then(data => {
@@ -31,8 +28,10 @@ class Search extends React.Component {
   render() {
     return (
       <div className="headerBlock">
-        <form onSubmit={this.handleSubmit} className="searchfield">
-          <h1>Movie Title Search Engine</h1>
+        <form>
+          <Typography variant="h3" gutterBottom color="primary">
+            OMDB Movie Search Engine
+          </Typography>
           <input
             onChange={this.handleChange}
             className="inputtext"
@@ -40,6 +39,7 @@ class Search extends React.Component {
             placeholder="Search here"
             value={this.state.input}
           />
+
           <Button
             variant="contained"
             color="primary"

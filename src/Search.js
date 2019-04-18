@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 class Search extends React.Component {
   constructor(props) {
@@ -39,7 +40,13 @@ class Search extends React.Component {
             placeholder="Search here"
             value={this.state.input}
           />
-          <button>Search</button>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={this.handleSubmit}
+          >
+            Search
+          </Button>
         </form>
       </div>
     );

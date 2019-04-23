@@ -26,7 +26,6 @@ class App extends React.Component {
     this.setState({
       plot: plot
     });
-    console.log(this.state.plot);
   }
 
   render() {

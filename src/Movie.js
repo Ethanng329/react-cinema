@@ -1,16 +1,49 @@
 import React from 'react';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
 
+const styles = {
+  card: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '15rem',
+    height: '25rem',
+    margin: '0.5rem'
+  },
+  media: {
+    flex: 5,
+    height: '18rem',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat'
+  },
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'space-evenly',
+    flexDirection: 'flex-end'
+  },
+  titleContainer: {
+    flex: 1,
+    textAlign: 'center',
+    marginTop: '0.5rem'
+  }
+};
 class Movie extends React.Component {
   constructor(props) {
-    super(props)
-    this.handleClick = this.handleClick.bind(this)
-
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event) {
-    // console.log(this.props.image.imdbID)
-    fetch(`https://www.omdbapi.com/?i=${this.props.image.imdbID}&apikey=db96ccd2`)
-      .then(function (response) {
+    fetch(
+      `https://www.omdbapi.com/?i=${this.props.image.imdbID}&apikey=db96ccd2`
+    )
+      .then(function(response) {
         return response.json();
       })
       .then(data => {
@@ -18,28 +51,43 @@ class Movie extends React.Component {
         console.log(plot);
         this.props.plot(plot);
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
-        alert("Search Error, please try another search term");
-        // something went wrong. let's sort it out
+        alert('Search Error, please try another search term');
       });
   }
 
-
-
   render() {
-    return <div>
-      <a className="item" href={`https://www.imdb.com/title/${this.props.image.imdbID}`} >
-        <img className="img" src={this.props.image.Poster} alt="" /></a>
-      <p onClick={this.handleClick} className="item__name">{this.props.image.Title} ({this.props.image.Year})</p>
-    </div>
+    const { classes } = this.props;
+    const { Poster, Title, Year, imdbID } = this.props.image;
 
+    return (
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image={`${Poster}`}
+          title={Title}
+        />
+        <Typography
+          className={classes.titleContainer}
+          gutterBottom
+          variant="subtitle1"
+        >
+          {`${Title} (${Year})`}
+        </Typography>
+        {/* <Typography variant="p">{`(${Year})`}</Typography> */}
+
+        <CardActions className={classes.buttonContainer}>
+          <Button size="small" color="primary">
+            Plot
+          </Button>
+          <Button size="small" color="secondary">
+            More details
+          </Button>
+        </CardActions>
+      </Card>
+    );
   }
-
 }
 
-
-
-
-
-export default Movie;
+export default withStyles(styles)(Movie);

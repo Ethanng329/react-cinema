@@ -2,15 +2,21 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 
+const styles = {
+  header: {
+    marginTop: '3rem'
+  }
+};
 class Search extends React.Component {
   state = {
     input: ''
   };
 
-  handleChange = name => event => {
+  handleChange = event => {
     this.setState({
-      [name]: event.target.value
+      input: event.target.value
     });
   };
 
@@ -26,10 +32,16 @@ class Search extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <div className="headerBlock">
-        <form>
-          <Typography variant="h3" gutterBottom color="primary">
+        <form onSubmit={this.handleSubmit}>
+          <Typography
+            className={classes.header}
+            variant="h3"
+            gutterBottom
+            color="primary"
+          >
             OMDB Movie Search Engine
           </Typography>
           <input
@@ -53,4 +65,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default withStyles(styles)(Search);

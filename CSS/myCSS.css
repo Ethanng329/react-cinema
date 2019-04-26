@@ -6,12 +6,11 @@
 .resultDisplay {
   display: flex;
   flex-wrap: wrap;
-  background-color: whitegrey;
   overflow: auto;
   height: 65vh;
-  margin: 0px 30px 0px 30px;
-  justify-content: space-between;
-  padding: 10px 10px 10px 10px;
+  margin: 1rem 1rem 0 1rem;
+  justify-content: space-evenly;
+  padding: 0;
 }
 
 input {
@@ -32,7 +31,7 @@ input {
     center top no-repeat;
   background-size: cover;
 }
-
+/* 
 .item {
   display: flex;
   flex-direction: column;
@@ -43,12 +42,14 @@ input {
   border-radius: 5px;
   text-align: center;
   /* background-color: silver; */
-  justify-content: space-between;
+/* justify-content: space-between;
   border: solid 1px black;
   box-shadow: 3px 3px #888888;
   height: 50vh;
   width: 30vh;
-}
+} */
+/* */
+*/
 
 /* .img {
   border-radius: 5px;

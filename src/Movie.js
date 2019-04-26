@@ -17,7 +17,7 @@ const styles = {
     margin: '0.5rem'
   },
   media: {
-    flex: 5,
+    flex: 7,
     height: '18rem',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat'
@@ -28,9 +28,11 @@ const styles = {
     flexDirection: 'flex-end'
   },
   titleContainer: {
+    display: 'flex',
     flex: 1,
+    justifyContent: 'center',
     textAlign: 'center',
-    marginTop: '0.5rem'
+    marginTop: '1rem'
   }
 };
 class Movie extends React.Component {
@@ -68,21 +70,15 @@ class Movie extends React.Component {
           image={`${Poster}`}
           title={Title}
         />
-        <Typography
-          className={classes.titleContainer}
-          gutterBottom
-          variant="subtitle1"
-        >
+        <Typography className={classes.titleContainer} variant="subtitle1">
           {`${Title} (${Year})`}
         </Typography>
-        {/* <Typography variant="p">{`(${Year})`}</Typography> */}
-
         <CardActions className={classes.buttonContainer}>
           <Button size="small" color="primary">
             Plot
           </Button>
           <Button size="small" color="secondary">
-            More details
+            More info
           </Button>
         </CardActions>
       </Card>

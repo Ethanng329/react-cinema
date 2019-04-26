@@ -49,9 +49,7 @@ class Movie extends React.Component {
         return response.json();
       })
       .then(data => {
-        const plot = data.Plot;
-        console.log(plot);
-        this.props.plot(plot);
+        this.props.plot(data.Plot);
       })
       .catch(function(error) {
         console.log(error);
@@ -62,7 +60,6 @@ class Movie extends React.Component {
   render() {
     const { classes } = this.props;
     const { Poster, Title, Year, imdbID } = this.props.image;
-
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -74,10 +71,15 @@ class Movie extends React.Component {
           {`${Title} (${Year})`}
         </Typography>
         <CardActions className={classes.buttonContainer}>
-          <Button size="small" color="primary">
+          <Button size="small" color="primary" onClick={this.handleClick}>
             Plot
           </Button>
-          <Button size="small" color="secondary">
+          <Button
+            component="a"
+            href={`https://www.imdb.com/title/${this.props.image.imdbID}`}
+            size="small"
+            color="secondary"
+          >
             More info
           </Button>
         </CardActions>

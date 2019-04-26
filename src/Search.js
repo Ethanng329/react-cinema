@@ -12,7 +12,8 @@ const styles = {
   textField: {
     backgroundColor: 'white',
     opacity: '0.7',
-    flex: 6
+    flex: 6,
+    borderRadius: '4px'
   },
   button: {
     marginLeft: '1rem',

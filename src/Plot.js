@@ -15,7 +15,9 @@ const style = {
     flex: 1,
     alignItems: 'center',
     alignSelf: 'center',
-    backgroundColor: '#dbdbdb'
+    backgroundColor: '#dbdbdb',
+    padding: '1rem',
+    fontFamily: 'roboto'
   }
 };
 class Plot extends React.Component {
@@ -25,9 +27,6 @@ class Plot extends React.Component {
       <PaperContainer>
         <Paper className={classes.text}>Plot:{this.props.plot}</Paper>
       </PaperContainer>
-      // <div className="plotfooter">
-      //   <p>Plot:{this.props.plot}</p>
-      // </div>
     );
   }
 }

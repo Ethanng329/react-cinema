@@ -1,4 +1,4 @@
-<p align="center"><img src="./screenshot.png"/></p>
+<p align="center"><img src="./screenshot1.png"/></p>
 
 ## React-cinema, movie title search engine powered by OMDB
 
